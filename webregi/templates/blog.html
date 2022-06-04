@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% load static %}
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Regi Apriandi</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        .column {
+          float: left;
+          width: 25%;
+          padding: 5px;
+        }
+        
+        /* Clearfix (clear floats) */
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        </style>
+  </head>
+
+  <body>
+    <header style="background-color: black;">
+        <nav>
+          <ul>
+            <li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'index' %}">Regi Apriandi</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main>
+      <section>
+        <div>
+           <h1 style="color: white;padding-top: 0px; padding-bottom: 0px; font-size:1px">.</h1>
+        </div>
+      </section>
+    </main>
+
+    <section class="supporting">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Entries Column -->
+                <div class="col-md-8 mt-3 left">
+                    {% for post in post_list %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                            <p class="card-text">{{post.content | striptags | truncatewords:50 }}</p>
+                            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+            </div>
+        </div>
+    </section>
+
+      <footer style="background-color: black;">
+        <div class="container">
+          <p>&copy; about.regiapriandi.me</p>
+        </div>
+      </footer>
+  
+
+<script type="text/javascript" src="{% static 'js/main.70a66962.js' %}"></script></body>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

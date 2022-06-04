@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% load static %}
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Regi Apriandi</title>
+  </head>
+
+  <body>
+    <header>
+        <nav>
+          <ul>
+            <li><a class="nav-link" href="#home" style="text-decoration: none; color: white">Home</a></li>
+            <li><a class="nav-link" href="#about" style="text-decoration: none; color: white">About</a></li>
+		  	<li><a target="_blank" class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>
+         <li><a class="nav-link" target="_blank" href="{% url 'resume' %}" style="text-decoration: none; color: white">Resume</a></li>
+		  	<li><a class="nav-link" href="#contact" style="text-decoration: none; color: white">Contact</a></li>
+		  	<li><a class="nav-link" href="#photography" style="text-decoration: none; color: white">Photography</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main>
+      <section id="home">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="regi">Hello!</h1>
+          <div class="hero-full-container">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="hero-full-wrapper">
+                  <div class="text-content">
+                    <h1 class="gerak">I am
+                      <span id="typed-strings">
+                        <span>a Student</span>
+                        <span>a Human</span>
+                        <span>a Dream Chaser</span>
+                      </span>
+                      <span id="typed"></span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <a href="#about" class="btn-main"> Lets Explore! </a>
+        </div>
+      </div>
+      </section>
+    </main>
+
+    <section class="supporting" id="about">
+      <div class="container">
+        <div class="col">
+          <h2>About</h2>
+          <p>I am a student at the Telkom Purwokerto Institute of Technology who is currently studying informatics engineering in semester 5. I was born in Sindangheula, Central Java and I really like to learn something new about technology. In my spare time, I like to write about the world of technology that I know.</p>
+          <div class="polaroid">
+            <img src="{% static 'images/DSCF9649-2-min.jpg' %}" style="width:100%">
+            <div class="container">
+            <p>At Scientia Square Park</p>
+            </div>
+          </div>
+
+          <div class="polaroid">
+            <img src="{% static 'images/DSCF9652-2-min.jpg' %}" style="width:100%">
+            <div class="container">
+            <p>At Scientia Square Park</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="supporting" id="contact">
+      <div class="container">
+        <div class="col">
+          <h2>Contact</h2>
+          <p>below is a list of my contacts and social media</p>
+          <br>
+          <p>Whatsapp  : <a href="https://api.whatsapp.com/send/?phone=6287794853484" target="_blank">+62 877-9485-3484</a></p>
+          <p>Instagram     : <a href="https://www.instagram.com/regiapriandii/" target="_blank">@regiapriandii</a></p>
+          <p>Twitter       : <a href="https://twitter.com/RegiApriandi4" target="_blank">@regiapriandi4</a></p>
+          <p>Youtube       : <a href="https://www.youtube.com/channel/UC8otFQ1tez1_hHexPEUmqkA" target="_blank">Regi Apriandi</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="supporting supporting_photo" id="photography">
+      <div class="container">
+        <div class="col">
+          <h2>Photography</h2>
+          <p>I really like taking pictures of nature, especially in the countryside, maybe this is a list of photos that I got</p>
+
+          <img class="myImages" id="myImg" src="{% static 'images/bali.jpg' %}" alt="Pandawa Beach, Bali">
+          <img class="myImages" id="myImg" src="{% static 'images/bunga.jpg' %}" alt="Flower at Lio Mountain, Brebes">
+          <img class="myImages" id="myImg" src="{% static 'images/cibingbin.JPG' %}" alt="Cibingbin hills, Kuningan">
+          <img class="myImages" id="myImg" src="{% static 'images/kinono.JPG' %}" alt="Kinono Rice Field, Brebes">
+          <img class="myImages" id="myImg" src="{% static 'images/padi.JPG' %}" alt="Rice flower, Salem">
+          <img class="myImages" id="myImg" src="{% static 'images/pantai.JPG' %}" alt="Pandawa Beach, Bali">
+          <img class="myImages" id="myImg" src="{% static 'images/salem.JPG' %}" alt="Rice Field, Salem">
+          <img class="myImages" id="myImg" src="{% static 'images/semarang.jpg' %}" alt="Agung mosque, Semarang">
+          <img class="myImages" id="myImg" src="{% static 'images/tugu.JPG' %}" alt="Pointed bamboo monument, Sindangheula">
+
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+          </div>
+
+          <script>
+          // Get the modal
+          var modal = document.getElementById('myModal');
+
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var images = document.getElementsByClassName('myImages');
+          var modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+
+          for (var i = 0; i < images.length; i++) {
+          var img = images[i];
+          // and attach our click listener for this image.
+          img.onclick = function(evt) {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+            }
+          }
+
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; about.regiapriandi.me</p>
+      </div>
+    </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     type();
+     movingBackgroundImage();
+  });
+</script>
+
+<script type="text/javascript" src="{% static 'js/main.70a66962.js' %}"></script></body>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
