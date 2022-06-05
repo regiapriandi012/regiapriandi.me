@@ -9,7 +9,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
      crossorigin="anonymous"></script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <title>Regi Apriandi</title>
+    {% block title %} 
+    <title>{{ post.title }}</title>
     <style>
         * {
           box-sizing: border-box;
@@ -42,7 +43,7 @@
     <main>
       <section>
         <div>
-            <h1 style="padding-top: 80px; padding-bottom: 20px;">{% block title %} {{ post.title }} {% endblock title %}</h1>
+            <h1 style="padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px">{{ post.title }} {% endblock title %}</h1>
             <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
         </div>
       </section>

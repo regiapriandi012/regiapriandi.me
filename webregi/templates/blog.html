@@ -9,7 +9,7 @@
     <script data-ad-client="ca-pub-7279595890212028" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
      crossorigin="anonymous"></script>
-    <title>Regi Apriandi</title>
+    <title>Regi Apriandi Blog</title>
     <style>
         * {
           box-sizing: border-box;
@@ -55,7 +55,7 @@
                     {% for post in post_list %}
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-title">{{ post.title }}</h2>
+                            <h2 style="text-transform: none;">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
                             <p class="card-text">{{post.content | striptags | truncatewords:50 }}</p>
                             <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>

@@ -16,12 +16,12 @@
     <header>
         <nav>
           <ul>
-            <li><a class="nav-link" href="#home" style="text-decoration: none; color: white">Home</a></li>
-            <li><a class="nav-link" href="#about" style="text-decoration: none; color: white">About</a></li>
-		  	<li><a target="_blank" class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>
-         <li><a class="nav-link" target="_blank" href="{% url 'resume' %}" style="text-decoration: none; color: white">Resume</a></li>
-		  	<li><a class="nav-link" href="#contact" style="text-decoration: none; color: white">Contact</a></li>
-		  	<li><a class="nav-link" href="#photography" style="text-decoration: none; color: white">Photography</a></li>
+            <li style="margin-right: 0px;"><a class="nav-link" href="{% url 'index' %}" style="text-decoration: none; color: white">Home</a></li>
+            <li style="margin-right: 0px;"><a class="nav-link" href="#about" style="text-decoration: none; color: white">About</a></li>
+            <li style="margin-right: 15px;"><a class="nav-link" href="#contact" style="text-decoration: none; color: white">Contact</a></li>
+            <li style="margin-right: 55px;"><a class="nav-link" href="#photography" style="text-decoration: none; color: white;">Photography</a></li>
+            <li style="margin-right: 0px;"><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blogs</a></li>
+            <li><a class="nav-link" target="_blank" href="{% url 'resume' %}" style="text-decoration: none; color: white">Resume</a></li>
           </ul>
         </nav>
     </header>
@@ -61,7 +61,7 @@
       <div class="container">
         <div class="col">
           <h2>About</h2>
-          <p>I am a student at the Telkom Purwokerto Institute of Technology who is currently studying informatics engineering in semester 5. I was born in Sindangheula, Central Java and I really like to learn something new about technology. In my spare time, I like to write about the world of technology that I know.</p>
+          <p>I am a student at the Telkom Purwokerto Institute of Technology who is currently studying informatics engineering in 6th semester. I was born in Sindangheula, Central Java and I really like to learn something new about technology. In my spare time, I like to write about the world of technology that I know.</p>
           <div class="polaroid">
             <img src="{% static 'images/DSCF9649-2-min.jpg' %}" style="width:100%">
             <div class="container">
@@ -99,7 +99,7 @@
         <div class="col">
           <h2>Photography</h2>
           <p>I really like taking pictures of nature, especially in the countryside, maybe this is a list of photos that I got</p>
-
+          {% for photo in photography_view %}
           <img class="myImages" id="myImg" src="{% static 'images/bali.jpg' %}" alt="Pandawa Beach, Bali">
           <img class="myImages" id="myImg" src="{% static 'images/bunga.jpg' %}" alt="Flower at Lio Mountain, Brebes">
           <img class="myImages" id="myImg" src="{% static 'images/cibingbin.JPG' %}" alt="Cibingbin hills, Kuningan">
