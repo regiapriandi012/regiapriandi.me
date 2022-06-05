@@ -5,5 +5,5 @@ from webregi.views import AdsView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webregi.urls')),
-    path('ads.txt', views.AdsView.as_view()),
+    path('ads.txt', AdsView.as_view()),
 ]
