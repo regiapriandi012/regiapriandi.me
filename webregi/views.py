@@ -45,6 +45,6 @@ def post_detail(request, slug):
                                            'comment_form': comment_form})
 
 class AdsView(View):
-    line  =  "google.com, pub-7279595890212028, DIRECT, f08c47fec0942fa0"
     def get(self, request, *args, **kwargs):
+        line  =  "google.com, pub-7279595890212028, DIRECT, f08c47fec0942fa0"
         return HttpResponse(line)
