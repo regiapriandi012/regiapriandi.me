@@ -12,6 +12,7 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     {% block title %} 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="{{ post.title }}">
     <meta name="keywords" content="{{ post.title }}">
     <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
     <title>{{ post.title }} | Regi Apriandi Blog</title>
@@ -54,6 +55,8 @@
         <div>
             <h1 style="padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">{{ post.title }} {% endblock title %}</h1>
             <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+            {% load social_share %}
+              {% post_to_linkedin object_or_url %}
         </div>
       </section>
     </main>

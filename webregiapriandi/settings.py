@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webregi',
     'crispy_forms',
+    'django_social_share'
 ]
 
 MIDDLEWARE = [
