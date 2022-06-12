@@ -3866,11 +3866,11 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" class = "p2" method="post">
+            <form style="text-align: left; width: 100%;" class = "p2" method="post" action-xhr="">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
-              <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
             {% endif %}
           </div>
