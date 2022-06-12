@@ -3866,11 +3866,21 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" class = "p2" method="post" action-xhr="/post_detail/">
+            <form style="text-align: left; width: 100%;" class="p2" method="post" action-xhr="/post_detail/">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <input type="submit" value="Submit">
+              <div submit-success>
+                <template type="amp-mustache">
+                  Comment Submitted!.
+                </template>
+              </div>
+
+              <div submit-error>
+                <template type="amp-mustache">
+                  Error!, please try again.
+                </template>
             </form>
             {% endif %}
           </div>
