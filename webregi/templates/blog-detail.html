@@ -21,7 +21,9 @@
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
   </script>
-  <!-- CSS only -->
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <!-- CSS only
+    -->
   <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
   <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">-->
@@ -30,6 +32,11 @@
   <meta name="title" content="{{ post.title }}">
   <meta name="keywords" content="{{ post.title }}">
   <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:site_name" content="RegiApriandiBlog">
+  <meta property="og:url" content="{% url 'post_detail' post.slug %}">
+  <meta property="og:description" content="{{ post.content | striptags | truncatewords:150  }}">
+  <meta property="og:type" content="article">
   <title>{{ post.title }} | Regi Apriandi Blog</title>
   <style amp-custom>
     form.amp-form-submit-success [submit-success],
@@ -3866,21 +3873,11 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" class="p2" method="post" action-xhr="blog-detail.html">
-              {{ comment_form | crispy }}
+            <form style="text-align: left; width: 100%;" method="post" action-xhr="/post_detail/">
               {% csrf_token %}
+              {{ comment_form | crispy }}
               <br>
-              <input type="submit" value="Submit">
-              <div submit-success>
-                <template type="amp-mustache">
-                  Comment Submitted!.
-                </template>
-              </div>
-
-              <div submit-error>
-                <template type="amp-mustache">
-                  Error!, please try again.
-                </template>
+              <button type="submit" value="Submit" class="btn btn-primary">
             </form>
             {% endif %}
           </div>
