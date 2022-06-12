@@ -3875,9 +3875,9 @@
             {% load crispy_forms_tags %}
             <form style="text-align: left; width: 100%;" method="post" action-xhr="/post_detail/">
               {% csrf_token %}
-              {{ comment_form | crispy }}
+              {{ comment_form.as_p }}
               <br>
-              <button type="submit" value="Submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
             {% endif %}
           </div>
