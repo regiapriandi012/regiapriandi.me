@@ -8,7 +8,6 @@
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="canonical" href="./blog-detail-regular.html" />
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
   <!--<script data-ad-client="ca-pub-7279595890212028" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -3803,8 +3802,8 @@
           style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
           {{ post.title }} {% endblock title %}</h1>
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
-        {% load social_share %}
-        {% post_to_linkedin object_or_url %}
+        <!--{% load social_share %}
+        {% post_to_linkedin object_or_url %}-->
       </div>
     </section>
   </main>
@@ -3845,7 +3844,7 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" method="post" style="margin-top: 1.3em;">
+            <form style="text-align: left; width: 100%;" method="post">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
