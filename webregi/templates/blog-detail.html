@@ -15,6 +15,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
     crossorigin="anonymous"></script>-->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
   </script>
   <!-- CSS only -->
@@ -36,6 +37,13 @@
     a {
       border: none;
       background-color: transparent;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
     }
 
     .column {
@@ -76,6 +84,7 @@
       font-size: 15px;
       text-align: center;
     }
+
     :root {
       --bs-blue: #0d6efd;
       --bs-indigo: #6610f2;
@@ -3685,7 +3694,6 @@
     .mb-5 {
       margin-bottom: 3rem
     }
-
   </style>
 
   <style amp-boilerplate>
@@ -3820,7 +3828,7 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left;" method="post" style="margin-top: 1.3em;">
+            <form style="text-align: left; width: 100%;" method="post" style="margin-top: 1.3em;">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
