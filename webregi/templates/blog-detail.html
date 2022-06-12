@@ -8,6 +8,10 @@
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="canonical" href="./blog-detail-regular.html" />
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js">
+  </script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js">
+  </script>
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
   <!--<script data-ad-client="ca-pub-7279595890212028" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -28,6 +32,24 @@
   <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
   <title>{{ post.title }} | Regi Apriandi Blog</title>
   <style amp-custom>
+    form.amp-form-submit-success [submit-success],
+    form.amp-form-submit-error [submit-error] {
+      margin-top: 16px;
+    }
+
+    form.amp-form-submit-success [submit-success] {
+      color: white;
+      background-color: gray;
+    }
+
+    form.amp-form-submit-error [submit-error] {
+      color: red;
+    }
+
+    form.amp-form-submit-success.hide-inputs>input {
+      display: none;
+    }
+
     * {
       box-sizing: border-box;
       font-family: 'Raleway', sans-serif;
@@ -3844,7 +3866,7 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" method="post">
+            <form style="text-align: left; width: 100%;" class = "p2" method="post">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
