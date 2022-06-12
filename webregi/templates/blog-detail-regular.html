@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+  <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
+  <script data-ad-client="ca-pub-7279595890212028" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
+    crossorigin="anonymous"></script>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  {% block title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="{{ post.title }}">
+  <meta name="keywords" content="{{ post.title }}">
+  <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
+  <title>{{ post.title }} | Regi Apriandi Blog</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    a {
+      border: none;
+      background-color: transparent;
+    }
+
+    .column {
+      float: left;
+      width: 25%;
+      padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    nav {
+      margin: 0;
+      padding: 13px 0;
+    }
+
+    nav li {
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      text-align: center !important;
+      font-size: 18px;
+      display: inline-block;
+      width: 80px;
+    }
+
+    footer {
+      color: #fff;
+      padding: 30px 0;
+    }
+
+    footer p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="background-color: black;">
+    <nav>
+      <ul>
+        <li style="margin-right: 20px;"><a class="nav-link" style="text-decoration: none; color: white"
+            href="{% url 'blog' %}">RegiApriandi</a></li>
+        <li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div style="text-align: center;">
+        <h1
+          style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
+          {{ post.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        {% load social_share %}
+        {% post_to_linkedin object_or_url %}
+      </div>
+    </section>
+  </main>
+
+  <section class="supporting">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 left  top">
+          <div class="card-body">
+            <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
+          </div>
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            <!-- comments -->
+            <h2>{{ comments.count }} comments</h2>
+
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+              <p class="font-weight-bold">
+                {{ comment.name }}
+                <span class=" text-muted font-weight-normal">
+                  {{ comment.created_on }}
+                </span>
+              </p>
+              {{ comment.body | linebreaks }}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+              Your comment is awaiting moderation
+            </div>
+            {% else %}
+            <h3>Leave a comment</h3>
+            {% load crispy_forms_tags %}
+            <form style="text-align: left;" method="post" style="margin-top: 1.3em;">
+              {{ comment_form | crispy }}
+              {% csrf_token %}
+              <br>
+              <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background-color: black;">
+    <div class="container">
+      <p><a class="nav-link" href="{% url 'index' %}" style="text-decoration: none; color: white">&copy;
+          regiapriandi.me</a></p>
+    </div>
+  </footer>
+
+
+  <script type="text/javascript" src="{% static 'js/main.70a66962.js' %}"></script>
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
