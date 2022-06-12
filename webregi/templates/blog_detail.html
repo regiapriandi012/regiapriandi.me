@@ -5,7 +5,7 @@
     {% load static %}
     <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
-    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>
+    <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
     <script data-ad-client="ca-pub-7279595890212028" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
      crossorigin="anonymous"></script>
@@ -22,10 +22,12 @@
     <style>
         * {
           box-sizing: border-box;
+          font-family: 'Raleway', sans-serif;
         }
 
         a {
           border: none;
+          background-color: transparent;
         }
         
         .column {
@@ -39,6 +41,32 @@
           content: "";
           clear: both;
           display: table;
+        }
+
+        nav {
+          margin: 0;
+          padding: 13px 0;  
+        }
+
+        nav li {
+          color: #fff;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 600;
+          text-align: center !important;
+          font-size: 18px;
+          display: inline-block;
+          width: 80px;
+        }
+
+        footer {
+          color: #fff;
+          padding: 30px 0;
+        }
+
+        footer p {
+          font-family: 'Raleway', sans-serif;
+          font-size: 15px;
+          text-align: center;
         }
         </style>
   </head>
@@ -58,8 +86,8 @@
 
     <main>
       <section>
-        <div>
-            <h1 style="padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">{{ post.title }} {% endblock title %}</h1>
+        <div style="text-align: center;">
+            <h1 style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">{{ post.title }} {% endblock title %}</h1>
             <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
             {% load social_share %}
               {% post_to_linkedin object_or_url %}
