@@ -3786,7 +3786,7 @@
             <div class="card-body">
               <a style="text-transform: none; text-decoration: none; color: black;"
                 href="{% url 'post_detail' post.slug  %}">
-                <h3 style="font-weight: bold; text-transform: none; text-decoration: none;">{{ post.title }}</h3>
+                <h3 style="text-transform: none; text-decoration: none;">{{ post.title }}</h3>
               </a>
               <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
               <p class="card-text">{{post.content | striptags | truncatewords:50 }}</p>
