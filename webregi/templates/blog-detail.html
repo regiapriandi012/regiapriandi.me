@@ -7,17 +7,19 @@
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script data-ad-client="ca-pub-7279595890212028" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
     crossorigin="anonymous"></script>
   <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
   </script>
-  <meta name="keywords"
-    content="machine learning Machine Learning Iot Internet of things cloud computing programming tutorial python docker flask computer science student">
-  <title>Regi Apriandi | Blog</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  {% block title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="{{ post.title }}">
+  <meta name="keywords" content="{{ post.title }}">
+  <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
+  <title>{{ post.title }} | Regi Apriandi Blog</title>
   <style>
     * {
       box-sizing: border-box;
@@ -85,8 +87,13 @@
 
   <main>
     <section>
-      <div>
-        <h1 style="color: white;padding-top: 0px; padding-bottom: 0px; font-size:1px">.</h1>
+      <div style="text-align: center;">
+        <h1
+          style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
+          {{ post.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        {% load social_share %}
+        {% post_to_linkedin object_or_url %}
       </div>
     </section>
   </main>
@@ -94,23 +101,48 @@
   <section class="supporting">
     <div class="container">
       <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
-          {% for post in post_list %}
-          <div class="card mb-4">
-            <div class="card-body">
-              <a style="text-transform: none; text-decoration: none; color: black;"
-                href="{% url 'post_detail' post.slug  %}">
-                <h3 style="text-transform: none; text-decoration: none;">{{ post.title }}</h3>
-              </a>
-              <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-              <p class="card-text">{{post.content | striptags | truncatewords:50 }}</p>
-              <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
-            </div>
+        <div class="col-md-8 card mb-4  mt-3 left  top">
+          <div class="card-body">
+            <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
           </div>
-          {% endfor %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            <!-- comments -->
+            <h2>{{ comments.count }} comments</h2>
+
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+              <p class="font-weight-bold">
+                {{ comment.name }}
+                <span class=" text-muted font-weight-normal">
+                  {{ comment.created_on }}
+                </span>
+              </p>
+              {{ comment.body | linebreaks }}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+              Your comment is awaiting moderation
+            </div>
+            {% else %}
+            <h3>Leave a comment</h3>
+            {% load crispy_forms_tags %}
+            <form style="text-align: left;" method="post" style="margin-top: 1.3em;">
+              {{ comment_form | crispy }}
+              {% csrf_token %}
+              <br>
+              <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
   </section>

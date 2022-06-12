@@ -7,9 +7,9 @@ from django.utils.feedgenerator import Atom1Feed
 
 class LatestPostsFeed(Feed):
     feed_type = Atom1Feed
-    title = "My blog"
+    title = "RegiApriandi Blog"
     link = ""
-    description = "New posts of my blog."
+    description = "New posts of RegiApriandi Blog."
 
     def items(self):
         return Post.objects.filter(status=1)
