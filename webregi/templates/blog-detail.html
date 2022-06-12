@@ -3866,7 +3866,7 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" class = "p2" method="post" action-xhr="blog-detail.html">
+            <form style="text-align: left; width: 100%;" class = "p2" method="post" action-xhr="/post_detail/">
               {{ comment_form | crispy }}
               {% csrf_token %}
               <br>
