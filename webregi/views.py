@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from .models import Postt
 from django.http import HttpResponse
 from django.views import View
 from .forms import CommentForm
@@ -13,7 +13,7 @@ def resume(request):
     return render(request, "achievement.html")
 
 class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Postt.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog.html'
 
 #class PostDetail(generic.DetailView):
@@ -22,7 +22,7 @@ class PostList(generic.ListView):
 
 def post_detail(request, slug):
     template_name = 'blog-detail.html'
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Postt, slug=slug)
     comments = post.comments.filter(active=True)
     new_comment = None
     # Comment posted
