@@ -7,7 +7,7 @@ STATUS = (
     (1,"Publish")
 )
 
-class Postt(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
@@ -28,7 +28,7 @@ class Postt(models.Model):
         return reverse("post_detail", kwargs={"slug": str(self.slug)})
 
 class Comment(models.Model):
-    post = models.ForeignKey(Postt,on_delete=models.CASCADE,related_name='comments')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()

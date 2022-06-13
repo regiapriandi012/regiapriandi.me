@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Postt, Comment
+from .models import Post, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 class PostAdmin(SummernoteModelAdmin):
@@ -9,7 +9,7 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
 
-admin.site.register(Postt, PostAdmin)
+admin.site.register(Post, PostAdmin)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
