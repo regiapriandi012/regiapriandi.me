@@ -37,14 +37,14 @@
       "@type": "BlogArticle",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{% url 'post_detail' post.slug %}"
+        "@id": "https://regiapriandi.me{% url 'post_detail' post.slug %}"
       },
       "headline": "{{post.title}}",
       "image": [
-        "{{ post.image.url }}"
+        "https://regiapriandi.me{{ post.image.url }}"
       ],
       "datePublished": "{{ post.created_on }}",
-      "dateModified": "{{ post.update_on }}",
+      "dateModified": "{{ post.updated_on }}",
       "author": {
         "@type": "Person",
         "name": "{{ post.name_author }}",
@@ -55,7 +55,7 @@
         "name": "{{ post.publisher }}",
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ post.publisher_logo.url }}"
+          "url": "https://regiapriandi.me{{ post.publisher_logo.url }}"
         }
       }
     }
@@ -3869,7 +3869,7 @@
       <div class="row">
         <div class="col-md-8 card mb-4  mt-3 left  top">
           <div class="card-body">
-            <amp-img src="{{ post.image.url }}" class="rounded" alt="{{post.title}}"></amp-img>
+            <amp-img src="{{ post.image.url }}" class="rounded" layout="responsive" alt="{{post.title}}"></amp-img>
             <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
           </div>
         </div>
