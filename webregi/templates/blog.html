@@ -3781,6 +3781,7 @@
           {% for post in post_list %}
           <div class="card mb-4">
             <div class="card-body">
+              <img src="{{ post.image.url }}" class="rounded featured-image-list" alt="{{post.title}}">
               <a style="text-transform: none; text-decoration: none; color: black;"
                 href="{% url 'post_detail' post.slug  %}">
                 <h3 style="text-transform: none; text-decoration: none;">{{ post.title }}</h3>
