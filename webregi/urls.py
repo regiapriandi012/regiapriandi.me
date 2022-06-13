@@ -7,7 +7,7 @@ from .feeds import LatestPostsFeed
 urlpatterns = [
     path('', views.index, name='index'),
     path('resume/', views.resume, name='resume'),
-    path('blog/', views.PostList.as_view(), name='blog'),
+    path('amp/blog/', views.PostList.as_view(), name='blog'),
     #path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('amp/blog/<slug:slug>/', views.post_detail, name='post_detail'),
     path("feed/rss", LatestPostsFeed(), name="post_feed"),
