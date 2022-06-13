@@ -18,8 +18,7 @@
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-  </script>
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
   <meta name="keywords"
     content="machine learning Machine Learning Iot Internet of things cloud computing programming tutorial python docker flask computer science student">
   <title>Regi Apriandi | Blog</title>
@@ -3792,6 +3791,10 @@
               <p class="card-text">{{post.content | striptags | truncatewords:50 }}</p>
               <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
             </div>
+            <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-7279595890212028"
+              data-ad-slot="6191833598" data-auto-format="rspv" data-full-width="">
+              <div overflow=""></div>
+            </amp-ad>
           </div>
           {% endfor %}
         </div>
