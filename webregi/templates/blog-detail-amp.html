@@ -88,6 +88,10 @@
       font-family: 'Raleway', sans-serif;
     }
 
+    .cover-image {
+      padding: 10px;
+    }
+
     a {
       border: none;
       background-color: transparent;
@@ -3872,8 +3876,10 @@
       <div class="row">
         <div class="col-md-8 card mb-4  mt-3 left  top">
           <div class="card-body">
+          <div class="cover-image">
             <amp-img src="{{ post.image.url }}" class="rounded" width="280" height="172" layout="responsive"
               alt="{{post.title}}"></amp-img>
+          </div>
             <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
           </div>
         </div>
