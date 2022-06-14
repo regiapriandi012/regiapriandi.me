@@ -5,10 +5,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from webregi.sitemaps import PostSitemap
-import django
-
-def custom_page_not_found(request):
-    return django.views.defaults.page_not_found(request, None)
 
 sitemaps = {
     "posts": PostSitemap,
@@ -20,7 +16,6 @@ urlpatterns = [
     path('ads.txt', AdsView.as_view()),
     path('summernote/', include('django_summernote.urls')),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
-    path("404/", custom_page_not_found),
 ]
 
 if settings.DEBUG:

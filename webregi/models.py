@@ -29,7 +29,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
 
-        return reverse("post_detail", kwargs={"slug": str(self.slug)})
+        return reverse("post_detail_amp", kwargs={"slug": str(self.slug)})
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
