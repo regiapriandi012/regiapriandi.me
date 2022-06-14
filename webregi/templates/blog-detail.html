@@ -3901,10 +3901,9 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" method="post" action-xhr="/post_detail/">
+            <form style="text-align: left; width: 100%;" method="post" action-xhr="{% url 'post_detail' post.slug  %}">
               {% csrf_token %}
               {{ comment_form.as_p }}
-              <br>
               <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
             {% endif %}
