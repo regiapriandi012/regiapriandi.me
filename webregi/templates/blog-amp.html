@@ -33,10 +33,6 @@
       background-color: transparent;
     }
 
-    .featured-image-list {
-      object-fit: cover;
-    }
-
     .column {
       float: left;
       width: 25%;
@@ -3789,7 +3785,7 @@
             <div class="card-body">
               <a href="{% url 'post_detail_amp' post.slug  %}">
                 <amp-img src="{{ post.image.url }}" layout="responsive" width="280" height="172"
-                  class="rounded featured-image-list" alt="{{post.title}}"></amp-img>
+                  class="rounded" alt="{{post.title}}"></amp-img>
               </a>
               <a style="text-transform: none; text-decoration: none; color: black;"
                 href="{% url 'post_detail_amp' post.slug  %}">
