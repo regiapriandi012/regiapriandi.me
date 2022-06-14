@@ -6,6 +6,9 @@ from django.views import View
 from .forms import CommentForm
 from django.shortcuts import render, get_object_or_404
 
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
+
 def index(request):
     return render(request, "index.html")
 
@@ -14,17 +17,18 @@ def resume(request):
 
 class PostListAmp(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog.amp.html'
+    template_name = 'blog-amp.html'
 
-class PostList(generic.ListView):
+"""class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog-regular.html'
+    template_name = 'blog-regular.html'"""
 
 #class PostDetail(generic.DetailView):
 #    model = Post
 #    template_name = 'blog_detail.html'
+
 def post_detail_amp(request, slug):
-    template_name = 'blog-detail.amp.html'
+    template_name = 'blog-detail-amp.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
     new_comment = None
@@ -47,7 +51,7 @@ def post_detail_amp(request, slug):
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
 
-def post_detail(request, slug):
+"""def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
@@ -70,6 +74,7 @@ def post_detail(request, slug):
                                            'comments': comments,
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
+"""
 
 class AdsView(View):
     def get(self, request, *args, **kwargs):

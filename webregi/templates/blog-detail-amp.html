@@ -7,7 +7,7 @@
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <!--<link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel="prefetch" as="font" type="font" crossorigin="anonymous">-->
-  <link rel="canonical" href="{% url 'post_detail' post.slug  %}" />
+  <link rel="canonical" href="https://regiapriandi.me{% url 'post_detail_amp' post.slug  %}" />
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   </script>
@@ -30,8 +30,8 @@
   <meta name="keywords" content="{{ post.title }}">
   <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
   <meta property="og:title" content="{{ post.title }}">
-  <meta property="og:site_name" content="RegiApriandiBlog">
-  <meta property="og:url" content="{% url 'post_detail_amp' post.slug %}">
+  <meta property="og:site_name" content="Regi Apriandi Blog">
+  <meta property="og:url" content="https://regiapriandi.me{% url 'post_detail_amp' post.slug %}">
   <meta property="og:description" content="{{ post.content | striptags | truncatewords:150  }}">
   <meta property="og:type" content="article">
   <script type="application/ld+json">
@@ -3872,7 +3872,7 @@
       <div class="row">
         <div class="col-md-8 card mb-4  mt-3 left  top">
           <div class="card-body">
-            <amp-img src="{{ post.image.url }}" class="rounded" height="172" width="304" layout="responsive"
+            <amp-img src="{{ post.image.url }}" class="rounded" width="900" height="675" layout="responsive"
               alt="{{post.title}}"></amp-img>
             <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
           </div>
