@@ -5,7 +5,8 @@
   {% load static %}
   <meta charset="utf-8">
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
-  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'
+    crossorigin="anonymous">
   <link rel="canonical" href="./blog-detail-regular.html" />
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js">
   </script>
@@ -3869,7 +3870,8 @@
       <div class="row">
         <div class="col-md-8 card mb-4  mt-3 left  top">
           <div class="card-body">
-            <amp-img src="{{ post.image.url }}" class="rounded" height="172" width="304" layout="responsive" alt="{{post.title}}"></amp-img>
+            <amp-img src="{{ post.image.url }}" class="rounded" height="172" width="304" layout="responsive"
+              alt="{{post.title}}"></amp-img>
             <p style="text-align: left;" class="card-text ">{{ post.content | safe | linebreaksbr }}</p>
           </div>
         </div>
@@ -3901,10 +3903,22 @@
             {% else %}
             <h3>Leave a comment</h3>
             {% load crispy_forms_tags %}
-            <form style="text-align: left; width: 100%;" method="post" action-xhr="{% url 'post_detail' post.slug  %}">
+            <form style="text-align: left; width: 100%;" target="_top" method="post"
+              action-xhr="{% url 'post_detail' post.slug  %}">
               {% csrf_token %}
-              {{ comment_form.as_p }}
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              {{ comment_form | crispy }}
+              <button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit</button>
+              <div submit-success>
+                <template type="amp-mustache">
+                  Comment Submitted, Thanks!
+                </template>
+              </div>
+
+              <div submit-error>
+                <template type="amp-mustache">
+                  Comment Submitted, Thanks!
+                </template>
+              </div>
             </form>
             {% endif %}
           </div>
