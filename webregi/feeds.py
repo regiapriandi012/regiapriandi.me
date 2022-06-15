@@ -21,4 +21,4 @@ class LatestPostsFeed(Feed):
         return truncatewords(item.content, 30)
 
     def item_link(self, item):
-        return reverse("post_detail_amp", args=[item.slug])
+        return reverse("post_detail", args=[item.slug])
