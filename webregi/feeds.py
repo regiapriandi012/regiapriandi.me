@@ -6,6 +6,7 @@ from django.utils.feedgenerator import Atom1Feed
 
 
 class LatestPostsFeed(Feed):
+    feed_type = Atom1Feed
     title = "Regi Apriandi Blog"
     link = "/amp/blog/"
     description = "Posts of Regi Apriandi Blog"
@@ -21,9 +22,3 @@ class LatestPostsFeed(Feed):
 
     def item_link(self, item):
         return reverse("post_detail_amp", args=[item.slug])
-
-from django.utils.feedgenerator import Atom1Feed
-
-class AtomSiteNewsFeed(LatestPostsFeed):
-    feed_type = Atom1Feed
-    subtitle = LatestPostsFeed.description
