@@ -19,6 +19,40 @@
   <meta name="keywords" content="{{ post.title }}">
   <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
   <title>{{ post.title }} | Regi Apriandi Blog</title>
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:site_name" content="Regi Apriandi Blog">
+  <meta property="og:url" content="https://regiapriandi.me{% url 'post_detail' post.slug %}">
+  <meta property="og:description" content="{{ post.content | striptags | truncatewords:150  }}">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://regiapriandi.me{% url 'post_detail' post.slug %}"
+      },
+      "headline": "{{post.title}}",
+      "image": [
+        "https://regiapriandi.me{{ post.image.url }}"
+      ],
+      "datePublished": "{{ post.created_on }}",
+      "dateModified": "{{ post.updated_on }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ post.name_author }}",
+        "url": "https://regiapriandi.me/resume"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ post.publisher }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://regiapriandi.me{{ post.publisher_logo.url }}"
+        }
+      }
+    }
+    </script>
   <style>
     * {
       box-sizing: border-box;
@@ -93,7 +127,7 @@
           style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
           {{ post.title }} {% endblock title %}</h1>
         <div class="cover-image">
-          <img src="{{ post.image.url }}" class="rounded" width="280" height="172" layout="responsive"
+          <img src="{{ post.image.url }}" class="rounded" width="100%" layout="responsive"
             alt="{{post.title}}">
         </div>
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
