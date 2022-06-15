@@ -5,6 +5,7 @@
   {% load static %}
   <meta charset="utf-8">
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+  <link rel="amphtml" href="https://regiapriandi.me{% url 'post_detail_amp' post.slug %}" />
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
   <script data-ad-client="ca-pub-7279595890212028" async
@@ -27,6 +28,10 @@
     a {
       border: none;
       background-color: transparent;
+    }
+
+    .cover-image {
+      padding: 15px 0 15px 0;
     }
 
     .column {
@@ -87,6 +92,10 @@
         <h1
           style="font-weight: bold; padding-top: 80px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
           {{ post.title }} {% endblock title %}</h1>
+        <div class="cover-image">
+          <img src="{{ post.image.url }}" class="rounded" width="280" height="172" layout="responsive"
+            alt="{{post.title}}">
+        </div>
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
         {% load social_share %}
         {% post_to_linkedin object_or_url %}

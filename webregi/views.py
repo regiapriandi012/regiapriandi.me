@@ -16,9 +16,9 @@ class PostListAmp(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog-amp.html'
 
-"""class PostList(generic.ListView):
+class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog-regular.html'"""
+    template_name = 'blog-regular.html'
 
 #class PostDetail(generic.DetailView):
 #    model = Post
@@ -48,7 +48,7 @@ def post_detail_amp(request, slug):
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
 
-"""def post_detail(request, slug):
+def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
@@ -71,7 +71,6 @@ def post_detail_amp(request, slug):
                                            'comments': comments,
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
-"""
 
 class AdsView(View):
     def get(self, request, *args, **kwargs):

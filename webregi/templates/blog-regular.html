@@ -5,6 +5,7 @@
   {% load static %}
   <meta charset="utf-8">
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+  <link rel="amphtml" href="https://regiapriandi.me{% url 'blog_amp' %}" />
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -20,6 +21,10 @@
     * {
       box-sizing: border-box;
       font-family: 'Raleway', sans-serif;
+    }
+
+    .cover-image {
+      padding: 15px;
     }
 
     a {
@@ -95,7 +100,12 @@
           {% for post in post_list %}
           <div class="card mb-4">
             <div class="card-body">
-              <a href="{% url 'post_detail' post.slug  %}"><img src="{{ post.image.url }}" layout="responsive" height="172" width="304" class="rounded featured-image-list" alt="{{post.title}}"></a>
+              <div class="cover-image">
+                <a href="{% url 'post_detail' post.slug  %}">
+                  <img src="{{ post.image.url }}" layout="responsive" width="280" height="172"
+                    class="rounded" alt="{{post.title}}">
+                </a>
+              </div>
               <a style="text-transform: none; text-decoration: none; color: black;"
                 href="{% url 'post_detail' post.slug  %}">
                 <h3 style="text-transform: none; text-decoration: none;">{{ post.title }}</h3>

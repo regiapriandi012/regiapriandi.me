@@ -9,8 +9,8 @@ urlpatterns = [
     path('resume/', views.resume, name='resume'),
     path('amp/blog/', views.PostListAmp.as_view(), name='blog_amp'),
     path('amp/blog/<slug:slug>/', views.post_detail_amp, name='post_detail_amp'),
-    #path('blog/', views.PostList.as_view(), name='blog'),
-    #path('blog/<slug:slug>/', views.post_detail, name='post_detail'),
+    path('blog/', views.PostList.as_view(), name='blog'),
+    path('blog/<slug:slug>/', views.post_detail, name='post_detail'),
     #path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path("feed/rss", LatestPostsFeed(), name="post_feed"),
 ]
