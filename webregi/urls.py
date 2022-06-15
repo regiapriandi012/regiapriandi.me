@@ -12,7 +12,7 @@ urlpatterns = [
     #path('blog/', views.PostList.as_view(), name='blog'),
     #path('blog/<slug:slug>/', views.post_detail, name='post_detail'),
     #path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
-    path("feed/rss", LatestPostsFeed(), name="post_feed"),
+    path("feed/rss", AtomSiteNewsFeed(), name="post_feed"),
 ]
 
 if settings.DEBUG:
