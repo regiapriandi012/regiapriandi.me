@@ -78,4 +78,4 @@ class AdsView(View):
         return HttpResponse(line)
 
 def page_not_found_view(request, exception):
-    return render(request, '404.html', status=404)
+    return render(request, '404.html', {})

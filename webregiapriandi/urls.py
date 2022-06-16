@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from webregi.sitemaps import PostSitemap
+from webregi.views import page_not_found_view
 
 sitemaps = {
     "posts": PostSitemap,
@@ -19,6 +20,9 @@ urlpatterns = [
 ]
 
 handler404 = "webregi.views.page_not_found_view"
+handler500 = "webregi.views.page_not_found_view"
+handler403 = "webregi.views.page_not_found_view"
+handler400 = "webregi.views.page_not_found_view"
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
