@@ -77,5 +77,5 @@ class AdsView(View):
         line  =  "google.com, pub-7279595890212028, DIRECT, f08c47fec0942fa0"
         return HttpResponse(line)
 
-def page_not_found_view(request):
-    return render(request, '404.html')
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
