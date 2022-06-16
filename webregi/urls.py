@@ -3,10 +3,13 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from .feeds import LatestPostsFeed
+from django.views.static import serve
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('resume/', views.resume, name='resume'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('amp/blog/', views.PostListAmp.as_view(), name='blog_amp'),
     path('amp/blog/<slug:slug>/', views.post_detail_amp, name='post_detail_amp'),
     path('blog/', views.PostList.as_view(), name='blog'),
