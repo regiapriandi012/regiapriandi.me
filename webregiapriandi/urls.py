@@ -20,9 +20,6 @@ urlpatterns = [
 ]
 
 handler404 = "webregi.views.page_not_found_view"
-handler500 = "webregi.views.page_not_found_view"
-handler403 = "webregi.views.page_not_found_view"
-handler400 = "webregi.views.page_not_found_view"
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

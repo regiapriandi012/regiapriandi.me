@@ -6,64 +6,6 @@
   <meta charset="utf-8">
   <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
-  <!--<link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel="prefetch" as="font" type="font" crossorigin="anonymous">-->
-  <link rel="amphtml" href="https://regiapriandi.me{% url 'post_detail_amp' post.slug  %}" />
-  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-  </script>
-  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-  <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
-  <!--<script data-ad-client="ca-pub-7279595890212028" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
-    crossorigin="anonymous"></script>-->
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
-     crossorigin="anonymous"></script>
-  <!-- CSS only
-    -->
-  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
-  <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">-->
-  {% block title %}
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-  <meta name="title" content="{{ post.title }}">
-  <meta name="keywords" content="{{ post.title }}">
-  <meta name="description" content="{{post.content | striptags | truncatewords:150 }}">
-  <meta property="og:title" content="{{ post.title }}">
-  <meta property="og:site_name" content="Regi Apriandi Blog">
-  <meta property="og:url" content="https://regiapriandi.me{% url 'post_detail' post.slug %}">
-  <meta property="og:description" content="{{ post.content | striptags | truncatewords:150  }}">
-  <meta property="og:type" content="article">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://regiapriandi.me{% url 'post_detail' post.slug %}"
-      },
-      "headline": "{{post.title}}",
-      "image": [
-        "https://regiapriandi.me{{ post.image.url }}"
-      ],
-      "datePublished": "{{ post.created_on }}",
-      "dateModified": "{{ post.updated_on }}",
-      "author": {
-        "@type": "Person",
-        "name": "{{ post.name_author }}",
-        "url": "https://regiapriandi.me/resume"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "{{ post.publisher }}",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://regiapriandi.me{{ post.publisher_logo.url }}"
-        }
-      }
-    }
-    </script>
   <title>{{ post.title }} | Regi Apriandi Blog</title>
   <style amp-custom>
     form.amp-form-submit-success [submit-success],
@@ -3850,8 +3792,7 @@
   <header style="background-color: black;">
     <nav>
       <ul>
-        <li style="margin-right: 20px;"><a class="nav-link" style="text-decoration: none; color: white"
-            href="{% url 'blog' %}">RegiApriandiBlog</a></li>
+        <li style="margin-right: 20px;"><a class="nav-link" style="text-decoration: none; color: white">RegiApriandiBlog</a></li>
         <!--<li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>-->
       </ul>
     </nav>
@@ -3862,7 +3803,7 @@
       <div style="text-align: center;">
         <h1
           style="font-weight: bold; padding-top: 250px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">Page Not Found!</h1>
-          <p><a class="nav-link" href="{% url 'blog' %}" style="text-decoration: none; color: white">&copy;
+          <p><a class="nav-link" style="text-decoration: none; color: white">&copy;
             Open Blog Page Here</a></p>
       </div>
     </section>
@@ -3870,7 +3811,7 @@
 
   <footer style="background-color: black;">
     <div class="container">
-      <p><a class="nav-link" href="{% url 'index' %}" style="text-decoration: none; color: white">&copy;
+      <p><a class="nav-link" style="text-decoration: none; color: white">&copy;
           regiapriandi.me</a></p>
     </div>
   </footer>
