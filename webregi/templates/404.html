@@ -2,134 +2,130 @@
 <html amp lang="en">
 
 <head>
-  {% load static %}
-  <meta charset="utf-8">
-  <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
-  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
-  <title>{{ post.title }} | Regi Apriandi Blog</title>
-  <style amp-custom>
-    form.amp-form-submit-success [submit-success],
-    form.amp-form-submit-error [submit-error] {
-      margin-top: 16px;
-    }
+    {% load static %}
+    <meta charset="utf-8">
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+    <title>{{ post.title }} | Regi Apriandi Blog</title>
+    <style amp-custom>
+        form.amp-form-submit-success [submit-success],
+        form.amp-form-submit-error [submit-error] {
+            margin-top: 16px;
+        }
 
-    form.amp-form-submit-success [submit-success] {
-      color: white;
-      background-color: gray;
-    }
+        form.amp-form-submit-success [submit-success] {
+            color: white;
+            background-color: gray;
+        }
 
-    form.amp-form-submit-error [submit-error] {
-      color: red;
-    }
+        form.amp-form-submit-error [submit-error] {
+            color: red;
+        }
 
-    form.amp-form-submit-success.hide-inputs>input {
-      display: none;
-    }
+        form.amp-form-submit-success.hide-inputs>input {
+            display: none;
+        }
 
-    * {
-      box-sizing: border-box;
-      font-family: 'Raleway', sans-serif;
-    }
-  </style>
-
-  <style amp-boilerplate>
-    body {
-      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-    }
-
-    @-webkit-keyframes -amp-start {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
-    }
-
-    @-moz-keyframes -amp-start {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
-    }
-
-    @-ms-keyframes -amp-start {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
-    }
-
-    @-o-keyframes -amp-start {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
-    }
-
-    @keyframes -amp-start {
-      from {
-        visibility: hidden;
-      }
-
-      to {
-        visibility: visible;
-      }
-    }
-  </style>
-  <noscript>
-    <style amp-boilerplate>
-      body {
-        -webkit-animation: none;
-        -moz-animation: none;
-        -ms-animation: none;
-        animation: none;
-      }
+        * {
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
     </style>
-  </noscript>
+
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none;
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
-  <header style="background-color: black;">
-    <nav>
-      <ul>
-        <li style="margin-right: 20px;"><a class="nav-link" href="https://regiapriandi.me/blog/" style="text-decoration: none; color: white">RegiApriandiBlog</a></li>
-        <!--<li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>-->
-      </ul>
-    </nav>
-  </header>
+    <header style="background-color: black;">
+        <nav>
+            <ul>
+                <li style="margin-right: 20px;"><a class="nav-link" href="https://regiapriandi.me/blog/"
+                        style="text-decoration: none; color: white">RegiApriandiBlog</a></li>
+                <!--<li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>-->
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section>
-      <div style="text-align: center;">
-        <h1
-          style="font-weight: bold; padding-top: 100px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">Page Not Found!</h1>
-          <p><a class="nav-link" style="text-decoration: none; color: white">&copy;
-            Open Blog Page Here</a></p>
-      </div>
-    </section>
-  </main>
-
-  <footer style="background-color: black;">
-    <div class="container">
-      <p><a class="nav-link" href="https://regiapriandi.me/" style="text-decoration: none; color: white">&copy;regiapriandi.me</a></p>
-    </div>
-  </footer>
+    <main>
+        <section>
+            <div style="text-align: center;">
+                <h1
+                    style="font-weight: bold; padding-top: 100px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
+                    Page Not Found!</h1>
+                <p><a class="nav-link" href="https://regiapriandi.me/blog/"
+                        style="text-decoration: none; color: white">Open Blog Page Here</a></p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
