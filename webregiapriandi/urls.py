@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from webregi.sitemaps import PostSitemap
 from django.conf.urls import url
+from django.views.static import serve
 
 sitemaps = {
     "posts": PostSitemap,
