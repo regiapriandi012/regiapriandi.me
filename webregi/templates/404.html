@@ -8,38 +8,74 @@
   <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
   <!--<link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel="prefetch" as="font" type="font" crossorigin="anonymous">-->
   <!--<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>-->
-  <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">-->
-  <!-- CSS only -->
+  <!--<script data-ad-client="ca-pub-7279595890212028" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
+    crossorigin="anonymous"></script>-->
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <!-- CSS only
+    -->
   <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
-  <link rel="amphtml" href="https://regiapriandi.me{% url 'blog_amp' %}" />
+  <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">-->
+  {% block title %}
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-  <!--<script data-ad-client="ca-pub-7279595890212028" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7279595890212028"
-     crossorigin="anonymous"></script>
-  <meta name="description" content="Blog Regi Apriandi yaitu blog yang berisi informasi mengenai teknologi dan seputar informatika seperti programing, machine learning, networking dan cloud computing">
-  <meta name="keywords"
-    content="machine learning Machine Learning Iot Internet of things cloud computing programming tutorial python docker flask computer science student">
-    <meta property="og:title" content="Regi Apriandi Blog">
-    <meta property="og:description" content="Blog Regi Apriandi yaitu blog yang berisi informasi mengenai teknologi dan seputar informatika seperti programing, machine learning, networking dan cloud computing">
-    <meta property="og:url" content="https://regiapriandi.me/blog">
-  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-  <title>Regi Apriandi | Blog</title>
+  <title>Regi Apriandi Blog</title>
   <style amp-custom>
+    form.amp-form-submit-success [submit-success],
+    form.amp-form-submit-error [submit-error] {
+      margin-top: 16px;
+    }
+
+    form.amp-form-submit-success [submit-success] {
+      color: white;
+      background-color: gray;
+    }
+
+    form.amp-form-submit-error [submit-error] {
+      color: red;
+    }
+
+    form.amp-form-submit-success.hide-inputs>input {
+      display: none;
+    }
+
     * {
       box-sizing: border-box;
       font-family: 'Raleway', sans-serif;
     }
 
     .cover-image {
-      padding: 15px;
+      padding: 15px 0 15px 0;
     }
 
     a {
       border: none;
       background-color: transparent;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border-radius: 5px;
+    }
+
+    input[type=email] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border-radius: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border-radius: 5px;
     }
 
     .column {
@@ -3690,7 +3726,10 @@
     .mb-5 {
       margin-bottom: 3rem
     }
-  </style>
+
+    .featured-image-list {
+      object-fit: cover;
+    }
   </style>
 
   <style amp-boilerplate>
@@ -3768,56 +3807,23 @@
     <nav>
       <ul>
         <li style="margin-right: 20px;"><a class="nav-link" style="text-decoration: none; color: white"
-            href="{% url 'blog' %}">RegiApriandiBlog</a></li>
-        <!--<li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog' %}">Blog</a></li>-->
+            href="https://regiapriandi.me/blog">RegiApriandiBlog</a></li>
+        <!--<li><a class="nav-link" style="text-decoration: none; color: white" href="{% url 'blog_amp' %}">Blog</a></li>-->
       </ul>
     </nav>
   </header>
 
   <main>
     <section>
-      <div>
-        <h1 style="color: white;padding-top: 0px; padding-bottom: 0px; font-size:1px">.</h1>
+      <div style="text-align: center;">
+        <h1
+          style="font-weight: bold; padding-top: 120px; padding-bottom: 20px; padding-left: 20px; padding-right:20px; font-size: 30px;">
+          Page Not Found!</h1>
+          <p><a class="nav-link" href="https://regiapriandi.me/blog" style="text-decoration: none; color: black">&copy;
+            Blog Page Here</a></p>
       </div>
     </section>
   </main>
-
-  <section class="supporting">
-    <div class="container">
-      <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
-          {% for post in post_list %}
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="cover-image">
-                <a href="{% url 'post_detail' post.slug  %}">
-                  <amp-img src="{{ post.image.url }}" layout="responsive" width="280" height="172"
-                    class="rounded" alt="{{post.title}}"></amp-img>
-                </a>
-              </div>
-              <a style="text-transform: none; text-decoration: none; color: black;"
-                href="{% url 'post_detail' post.slug  %}">
-                <h3 style="text-transform: none; text-decoration: none;">{{ post.title }}</h3>
-              </a>
-              <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-              <p class="card-text">{{post.content | striptags | truncatewords:25 }}</p>
-              <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
-      </div>
-    </div>
-  </section>
-
-  <footer style="background-color: black;">
-    <div class="container">
-      <p><a class="nav-link" href="{% url 'index' %}" style="text-decoration: none; color: white">&copy;
-          regiapriandi.me</a></p>
-    </div>
-  </footer>
 </body>
 
 </html>
