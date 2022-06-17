@@ -1,11 +1,10 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, url
 from webregi.views import AdsView
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from webregi.sitemaps import PostSitemap
-from django.conf.urls import url
 from django.views.static import serve
 
 sitemaps = {
