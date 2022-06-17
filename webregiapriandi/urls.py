@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from webregi.sitemaps import PostSitemap
-from webregi.views import page_not_found_view
 
 sitemaps = {
     "posts": PostSitemap,
