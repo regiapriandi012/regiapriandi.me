@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'webregiapriandi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1192D0DA811B4C1396277C8C96ABD0E7 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
