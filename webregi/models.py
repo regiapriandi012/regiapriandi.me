@@ -52,14 +52,21 @@ class Photography(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='photo_posts')
     created_on = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['created_on']
+
     def __str__(self):
         return self.image_name
 
 class Award(models.Model):
     award_name = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
+    year = models.CharField(max_length=200, choices=[(r,r) for r in range(2000, 2030)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
     link_award = models.URLField(max_length=500)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return self.award_name
@@ -67,20 +74,55 @@ class Award(models.Model):
 class Certification(models.Model):
     certification_name = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
+    year = models.CharField(max_length=200, choices=[(r,r) for r in range(2000, 2030)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
     link_certification = models.URLField(max_length=500)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return self.certification_name
 
 class Project(models.Model):
+    PROGRAMING_LANGUAGE = (
+        ("Python", "Python"),
+        ("Java", "Java"),
+        ("C++", "C++"),
+        ("C#", "C#"),
+        ("PHP", "PHP"),
+        ("JavaScript", "JavaScript"),
+        ("Kotlin", "Kotlin"),
+        ("Swift", "Swift"),
+        ("Ruby", "Ruby"),
+        ("Go", "Go"))
+
+    FRAMEWORK = (
+        ("Django", "Django"),
+        ("Flask", "Flask"),
+        ("Spring", "Spring"),
+        ("Laravel", "Laravel"),
+        ("CodeIgniter", "CodeIgniter"),
+        ("Ruby on Rails", "Ruby on Rails"),
+        ("Angular", "Angular"),
+        ("React", "React"),
+        ("Vue", "Vue"),
+        ("Bootstrap", "Bootstrap"),
+        ("Android", "Android"),
+        ("iOS", "iOS"),
+        ("Flutter", "Flutter")
+    )
     project_name = models.CharField(max_length=200)
-    language = models.CharField(max_length=200)
-    framework = models.CharField(max_length=200)
+    language = models.CharField(max_length=200, choices=PROGRAMING_LANGUAGE)
+    framework = models.CharField(max_length=200, choices=FRAMEWORK)
     description = models.TextField()
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
+    year = models.CharField(max_length=200, choices=[(r,r) for r in range(2000, 2030)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
     link_project = models.URLField(max_length=500)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return self.project_name
@@ -88,18 +130,35 @@ class Project(models.Model):
 class Publication(models.Model):
     publication_name = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
+    year = models.CharField(max_length=200, choices=[(r,r) for r in range(2000, 2030)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
     link_publication = models.URLField(max_length=500)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return self.publication_name
 
 class Programing(models.Model):
-    programing_name = models.CharField(max_length=200)
-    level = models.FloatField(
-        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
-    )
+    PROGRAMING_LANGUAGE = (
+        ("Python", "Python"),
+        ("Java", "Java"),
+        ("C++", "C++"),
+        ("C#", "C#"),
+        ("PHP", "PHP"),
+        ("JavaScript", "JavaScript"),
+        ("Kotlin", "Kotlin"),
+        ("Swift", "Swift"),
+        ("Ruby", "Ruby"),
+        ("Go", "Go"))
+    programing_name = models.CharField(max_length=200, choices=PROGRAMING_LANGUAGE)
+    level = models.FloatField(choices=[(round(i * 0.1, 1), round(i * 0.1, 1)) for i in range(1, 11)], validators=[MinValueValidator(0.1), MaxValueValidator(1.0)])
     logos = models.ImageField(upload_to='programing_logos/%Y/%m/%d/')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return self.programing_name
