@@ -29,30 +29,30 @@ class PhotographyAdmin(admin.ModelAdmin):
 
 @admin.register(Award)
 class AwardsAdmin(admin.ModelAdmin):
-    list_display = ('award_name', 'company', 'year')
+    list_display = ('award_name', 'company', 'year', 'created_on')
     search_fields = ('award_name', 'company', 'year')
     list_filter = ('created_on',)
 
 @admin.register(Certification)
 class CertificationsAdmin(admin.ModelAdmin):
-    list_display = ('certification_name', 'company', 'year')
+    list_display = ('certification_name', 'company', 'year', 'created_on')
     search_fields = ('certification_name', 'company', 'year')
     list_filter = ('created_on',)
 
 @admin.register(Project)
 class ProjectsAdmin(admin.ModelAdmin):
-    list_display = ('project_name', 'company', 'year')
+    list_display = ('project_name', 'company', 'year', 'created_on')
     search_fields = ('project_name', 'company', 'year')
     list_filter = ('created_on',)
 
 @admin.register(Publication)
 class PublicationsAdmin(admin.ModelAdmin):
-    list_display = ('publication_name', 'publisher', 'year')
+    list_display = ('publication_name', 'publisher', 'year', 'created_on')
     search_fields = ('publication_name', 'publisher', 'year')
     list_filter = ('created_on',)
 
 @admin.register(Programing)
 class ProgramingAdmin(admin.ModelAdmin):
-    list_display = ('programing_name', 'level')
+    list_display = ('programing_name', 'level', 'created_on')
     search_fields = ('programing_name', 'level')
     list_filter = ('created_on',)
