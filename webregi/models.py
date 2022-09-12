@@ -61,7 +61,7 @@ class Photography(models.Model):
 class Award(models.Model):
     award_name = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
+    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)])
     link_award = models.URLField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -74,7 +74,7 @@ class Award(models.Model):
 class Certification(models.Model):
     certification_name = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
+    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)])
     link_certification = models.URLField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -108,16 +108,13 @@ class Project(models.Model):
         ("React", "React"),
         ("Vue", "Vue"),
         ("Bootstrap", "Bootstrap"),
-        ("Android", "Android"),
-        ("iOS", "iOS"),
-        ("Flutter", "Flutter")
-    )
+        ("Android", "Android"))
     project_name = models.CharField(max_length=200)
     language = models.CharField(max_length=200, choices=PROGRAMING_LANGUAGE)
     framework = models.CharField(max_length=200, choices=FRAMEWORK)
     description = models.TextField()
     company = models.CharField(max_length=200)
-    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
+    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)])
     link_project = models.URLField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -130,7 +127,7 @@ class Project(models.Model):
 class Publication(models.Model):
     publication_name = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
-    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)], validators=[MinValueValidator(2000), MaxValueValidator(2030)])
+    year = models.CharField(max_length=200, choices=[("{}".format(r), "{}".format(r)) for r in range(2000, 2051)])
     link_publication = models.URLField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
