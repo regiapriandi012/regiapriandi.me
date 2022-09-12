@@ -121,11 +121,10 @@
     <div class="container" style="padding-top: 40px">
       <div class="col">
         <h2>Photography</h2>
-        <p>I really like taking pictures of nature, especially in the countryside, maybe this is a list of photos that I
-          got</p>
+        <p>Some photos taken that might spoil your view on the screen</p>
           {% for photo in photos %}
         <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{{ photo.image.url }}"
-          alt="{{ photo.place }}"> {% endfor %}
+          alt="At {{ photo.place }} by {{ photo.author }}"> {% endfor %}
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
