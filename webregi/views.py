@@ -1,24 +1,46 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from .models import Post, Photography, Award, Certification, Project, Publication, Programing
 from django.http import HttpResponse
 from django.views import View
 from .forms import CommentForm
 from django.shortcuts import render, get_object_or_404
 
 def index(request):
-    return render(request, "index.html")
+    photos = Photography.objects.all()
+    context = {
+        'photos': photos,
+    }
+    return render(request, "index.html", context)
 
 def resume(request):
-    return render(request, "achievement.html")
+    programing = Programing.objects.all()
+    project = Project.objects.all()
+    publication = Publication.objects.all()
+    certification = Certification.objects.all()
+    award = Award.objects.all()
+    context = {
+        'programing': programing,
+        'projects': project,
+        'year_projects': sorted(set([p.year for p in project]), reverse=True),
+        'publications': publication,
+        'year_publications': sorted(set([p.year for p in publication]), reverse=True),
+        'certifications': certification,
+        'year_certifications': sorted(set([p.year for p in certification]), reverse=True),
+        'awards': award,
+        'year_awards': sorted(set([p.year for p in award]), reverse=True),
+    }
+    return render(request, "achievement.html", context)
 
 class PostListAmp(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog-amp.html'
+    paginate_by = 3
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog-regular.html'
+    paginate_by = 3
 
 #class PostDetail(generic.DetailView):
 #    model = Post

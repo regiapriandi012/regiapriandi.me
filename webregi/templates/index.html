@@ -38,7 +38,7 @@
             style="text-decoration: none; color: white;">Photography</a></li>
         <li style="margin-right: 0px;"><a class="nav-link" style="text-decoration: none; color: white"
             href="{% url 'blog' %}">Blogs</a></li>
-        <li><a class="nav-link" target="_blank" href="{% url 'resume' %}"
+        <li><a class="nav-link" href="{% url 'resume' %}"
             style="text-decoration: none; color: white">Resume</a></li>
       </ul>
     </nav>
@@ -123,25 +123,9 @@
         <h2>Photography</h2>
         <p>I really like taking pictures of nature, especially in the countryside, maybe this is a list of photos that I
           got</p>
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/bali.jpg' %}"
-          alt="Pandawa Beach, Bali">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/bunga.jpg' %}"
-          alt="Flower at Lio Mountain, Brebes">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/cibingbin.JPG' %}"
-          alt="Cibingbin hills, Kuningan">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/kinono.JPG' %}"
-          alt="Kinono Rice Field, Brebes">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/padi.JPG' %}"
-          alt="Rice flower, Salem">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/pantai.JPG' %}"
-          alt="Pandawa Beach, Bali">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/salem.JPG' %}"
-          alt="Rice Field, Salem">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/semarang.jpg' %}"
-          alt="Agung mosque, Semarang">
-        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{% static 'images/tugu.JPG' %}"
-          alt="Pointed bamboo monument, Sindangheula">
-
+          {% for photo in photos %}
+        <img style="width: 50%; height: 50%;" class="myImages" id="myImg" src="{{ photo.image.url }}"
+          alt="{{ photo.place }}"> {% endfor %}
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -185,7 +169,9 @@
   <footer>
     <div class="container">
       <p><a class="nav-link" href="{% url 'index' %}" style="text-decoration: none; color: white">&copy;
-          regiapriandi.me</a></p>
+          regiapriandi.me</a>
+      <a href="https://www.digitalocean.com/?refcode=c80595539677&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
+      </p>
     </div>
   </footer>
 
