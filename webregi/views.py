@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post, Photography, Award, Certification, Project, Publication, Programing
+from .models import Post, Photography, Award, Certification, Project, Publication, Programing, Comment
 from django.http import HttpResponse
 from django.views import View
 from .forms import CommentForm
@@ -50,17 +50,15 @@ def post_detail_amp(request, slug):
     template_name = 'blog-detail-amp.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = None
+    new_comment = Comment()
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-
-            # Create Comment object but don't save to database yet
-            new_comment = comment_form.save(commit=False)
-            # Assign the current post to the comment
-            new_comment.post = post
-            # Save the comment to the database
+            new_comment.name = comment_form.cleaned_data['name']
+            new_comment.email = comment_form.cleaned_data['email']
+            new_comment.body = comment_form.cleaned_data['body']
+            # save to database
             new_comment.save()
     else:
         comment_form = CommentForm()
@@ -74,17 +72,15 @@ def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = None
+    new_comment = Comment()
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-
-            # Create Comment object but don't save to database yet
-            new_comment = comment_form.save(commit=False)
-            # Assign the current post to the comment
-            new_comment.post = post
-            # Save the comment to the database
+            new_comment.name = comment_form.cleaned_data['name']
+            new_comment.email = comment_form.cleaned_data['email']
+            new_comment.body = comment_form.cleaned_data['body']
+            # save to database
             new_comment.save()
     else:
         comment_form = CommentForm()
