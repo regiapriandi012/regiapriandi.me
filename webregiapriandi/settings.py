@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'django.contrib.sitemaps',
     'corsheaders',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+RECAPTCHA_PUBLIC_KEY = "6LeERfQhAAAAAK3V2AmqHWBUJpHJzdoHZccyrTJb"
+RECAPTCHA_PRIVATE_KEY = "6LeERfQhAAAAAGD6CPGKyO4PatVYDxO2y708N-5l"
