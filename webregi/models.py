@@ -102,6 +102,7 @@ class Project(models.Model):
         ("Flask", "Flask"),
         ("Spring", "Spring"),
         ("Laravel", "Laravel"),
+        ("Swing", "Swing"),
         ("CodeIgniter", "CodeIgniter"),
         ("Ruby on Rails", "Ruby on Rails"),
         ("Angular", "Angular"),
