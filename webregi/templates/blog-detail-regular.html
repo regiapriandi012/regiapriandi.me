@@ -3914,7 +3914,7 @@
                           action-xhr="{% url 'post_detail' post.slug  %}">
                         {% csrf_token %}
                         {{ comment_form | crispy }}
-                        <button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit</button>
+                        <br><button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit</button>
                         <div submit-success>
                             <template type="amp-mustache">
                                 Comment Submitted, Thanks!
@@ -3923,7 +3923,7 @@
 
                         <div submit-error>
                             <template type="amp-mustache">
-                                Comment Submitted, Thanks!
+                                Comment Not Submitted!
                             </template>
                         </div>
                     </form>
