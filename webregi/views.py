@@ -62,7 +62,7 @@ def post_detail_amp(request, slug):
             # Save the comment to the database
             new_comment.save()
     else:
-        comment_form = CommentForm()
+        comment_form = CommentFormAmp()
 
     return render(request, template_name, {'post': post,
                                            'comments': comments,
