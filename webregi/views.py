@@ -50,7 +50,7 @@ def post_detail_amp(request, slug):
     template_name = 'blog-detail-amp.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = None
+    new_comment_validation = False
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -63,19 +63,21 @@ def post_detail_amp(request, slug):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+            # validation
+            new_comment_validation += True
     else:
         comment_form = CommentForm()
 
     return render(request, template_name, {'post': post,
                                            'comments': comments,
-                                           'new_comment': new_comment,
+                                           'new_comment': new_comment_validation,
                                            'comment_form': comment_form})
 
 def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = None
+    new_comment_validation = False
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -88,12 +90,16 @@ def post_detail(request, slug):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+            # validation
+            new_comment_validation += True
+
+
     else:
         comment_form = CommentForm()
 
     return render(request, template_name, {'post': post,
                                            'comments': comments,
-                                           'new_comment': new_comment,
+                                           'new_comment': new_comment_validation,
                                            'comment_form': comment_form})
 
 class AdsView(View):
