@@ -3,7 +3,7 @@ from django.views import generic
 from .models import Post, Photography, Award, Certification, Project, Publication, Programing, Comment
 from django.http import HttpResponse
 from django.views import View
-from .forms import CommentForm
+from .forms import CommentForm, CommentFormAmp
 from django.shortcuts import render, get_object_or_404
 
 def index(request):
@@ -50,34 +50,30 @@ def post_detail_amp(request, slug):
     template_name = 'blog-detail-amp.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment_validation = False
+    new_comment = None
     # Comment posted
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentFormAmp(data=request.POST)
         if comment_form.is_valid():
-            new_comment = Comment()
-            new_comment.name = comment_form.cleaned_data['name']
-            new_comment.email = comment_form.cleaned_data['email']
-            new_comment.body = comment_form.cleaned_data['body']
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
             # Assign the current post to the comment
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
-            # validation
-            new_comment_validation += True
     else:
         comment_form = CommentForm()
 
     return render(request, template_name, {'post': post,
                                            'comments': comments,
-                                           'new_comment': new_comment_validation,
+                                           'new_comment': new_comment,
                                            'comment_form': comment_form})
 
 def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment_validation = False
+    new_comment = None
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -90,16 +86,12 @@ def post_detail(request, slug):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
-            # validation
-            new_comment_validation += True
-
-
     else:
         comment_form = CommentForm()
 
     return render(request, template_name, {'post': post,
                                            'comments': comments,
-                                           'new_comment': new_comment_validation,
+                                           'new_comment': new_comment,
                                            'comment_form': comment_form})
 
 class AdsView(View):
