@@ -50,11 +50,12 @@ def post_detail_amp(request, slug):
     template_name = 'blog-detail-amp.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = Comment()
+    new_comment = None
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
+            new_comment = Comment()
             new_comment.name = comment_form.cleaned_data['name']
             new_comment.email = comment_form.cleaned_data['email']
             new_comment.body = comment_form.cleaned_data['body']
@@ -72,11 +73,12 @@ def post_detail(request, slug):
     template_name = 'blog-detail-regular.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
-    new_comment = Comment()
+    new_comment = None
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
+            new_comment = Comment()
             new_comment.name = comment_form.cleaned_data['name']
             new_comment.email = comment_form.cleaned_data['email']
             new_comment.body = comment_form.cleaned_data['body']
