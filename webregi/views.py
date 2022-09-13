@@ -42,7 +42,7 @@ class PostList(generic.ListView):
     template_name = 'blog-regular.html'
     paginate_by = 3
 
-#class PostDetail(generic.DetailView):
+# class PostDetail(generic.DetailView):
 #    model = Post
 #    template_name = 'blog_detail.html'
 
@@ -53,13 +53,15 @@ def post_detail_amp(request, slug):
     new_comment = None
     # Comment posted
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             new_comment = Comment()
             new_comment.name = comment_form.cleaned_data['name']
             new_comment.email = comment_form.cleaned_data['email']
             new_comment.body = comment_form.cleaned_data['body']
-            # save to database
+            # Assign the current post to the comment
+            new_comment.post = post
+            # Save the comment to the database
             new_comment.save()
     else:
         comment_form = CommentForm()
@@ -76,13 +78,15 @@ def post_detail(request, slug):
     new_comment = None
     # Comment posted
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             new_comment = Comment()
             new_comment.name = comment_form.cleaned_data['name']
             new_comment.email = comment_form.cleaned_data['email']
             new_comment.body = comment_form.cleaned_data['body']
-            # save to database
+            # Assign the current post to the comment
+            new_comment.post = post
+            # Save the comment to the database
             new_comment.save()
     else:
         comment_form = CommentForm()
@@ -94,7 +98,7 @@ def post_detail(request, slug):
 
 class AdsView(View):
     def get(self, request, *args, **kwargs):
-        line  =  "google.com, pub-7279595890212028, DIRECT, f08c47fec0942fa0"
+        line = "google.com, pub-7279595890212028, DIRECT, f08c47fec0942fa0"
         return HttpResponse(line)
 
 def page_not_found_view(request, exception):
