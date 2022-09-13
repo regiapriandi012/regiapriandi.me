@@ -3911,22 +3911,10 @@
                     {% else %}
                     <h3>Leave a comment</h3>
                     {% load crispy_forms_tags %}
-                    <form style="text-align: left; width: 100%;" target="_top" method="post"
-                          action-xhr="{% url 'post_detail_amp' post.slug  %}">
+                    <form style="text-align: left; width: 100%;" method="post">
                         {% csrf_token %}
                         {{ comment_form | crispy }}
                         <br><button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit</button>
-                        <div submit-success>
-                            <template type="amp-mustache">
-                                Comment Submitted, Thanks!
-                            </template>
-                        </div>
-
-                        <div submit-error>
-                            <template type="amp-mustache">
-                                Comment Not Submitted!
-                            </template>
-                        </div>
                     </form>
                     {% endif %}
                 </div>
