@@ -99,7 +99,8 @@
                 {% endfor %}
             </ul>
             {% endfor %}
-            <br><h2 style="text-align: left;">Certifications</h2>
+            <br>
+            <h2 style="text-align: left;">Certifications</h2>
             {% for year in year_certifications %}
             <h3 style="text-align: left;"><b>{{ year }}</b></h3>
             <ul style="text-align: left;">
@@ -187,7 +188,7 @@
                 {% for publication in publications %}
                 {% if publication.year == year %}
                 <li style="padding: 10px;">
-                    <h5><b>{{ publication.publication_name }}</b> {{ publication.publisher }} <a
+                    <h5><b>{{ publication.publication_name }}</b> ({{ publication.publisher }}) <a
                             target="_blank"
                             href="{{ publication.link_publication}}">View
                         Pub</a></h5>
