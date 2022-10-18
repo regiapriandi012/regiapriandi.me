@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'webregiapriandi.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
-if DEVELOPMENT_MODE is True:
+"""if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -96,7 +96,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
-
+"""
 # Docker compose
 """DATABASES = {
     'default': {
@@ -108,6 +108,19 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
         'PORT': 5432,
     }
 }"""
+
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.{}'.format(
+             os.getenv('DATABASE_ENGINE', 'sqlite3')
+         ),
+         'NAME': os.getenv('DATABASE_NAME', 'webregiapriandi'),
+         'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
+         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'fpV"`Sumb\aP8YK}'),
+         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
+         'PORT': os.getenv('DATABASE_PORT', 5432),
+     }
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
