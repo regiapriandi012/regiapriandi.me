@@ -1,26 +1,23 @@
-FROM python:3.10-alpine3.16
+# Use the official Python image from the Docker Hub
 
-ADD requirements.txt /app/requirements.txt
+FROM python:3.8.2
 
-RUN set -ex \
-    && apk add --no-cache --virtual .build-deps postgresql-dev build-base \
-    && python -m venv /env \
-    && /env/bin/pip install --upgrade pip \
-    && /env/bin/pip install --no-cache-dir -r /app/requirements.txt \
-    && runDeps="$(scanelf --needed --nobanner --recursive /env \
-        | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
-        | sort -u \
-        | xargs -r apk info --installed \
-        | sort -u)" \
-    && apk add --virtual rundeps $runDeps \
-    && apk del .build-deps
+# Make a new directory to put our code in.
 
-ADD . /app
-WORKDIR /app
+RUN mkdir /code
 
-ENV VIRTUAL_ENV /env
-ENV PATH /env/bin:$PATH
+# Change the working directory.
 
-EXPOSE 8000
+WORKDIR /code
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "mysite.wsgi"]
+# Copy to code folder
+
+COPY . /code/
+
+# Install the requirements.
+
+RUN pip install -r requirements.txt
+
+# Run the application:
+
+CMD python manage.py runserver 0.0.0.0:8000

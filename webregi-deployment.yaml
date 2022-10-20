@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webregi-v2-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webregi-v2-app
+  template:
+    metadata:
+      labels:
+        app: webregi-v2-app
+    spec:
+      containers:
+      - name: webregi-v2-app
+        image: regiapriandi012/bismillah-berhasil:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_HOST
+          value: "db"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_PASSWORD
+          value: "postgres"
+        - name: DATABASE_NAME
+          value: "postgres"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webregi-v2-service
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  selector:
+    app: webregi-v2-app
