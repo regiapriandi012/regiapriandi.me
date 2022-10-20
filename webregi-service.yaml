@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: webregi-v2-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
