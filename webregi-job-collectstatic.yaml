@@ -11,13 +11,13 @@ spec:
           command: ['python', 'manage.py', 'collectstatic']
           env:
             - name: DATABASE_USER
-              value: "postgres"
+              value: "regiapriandi"
             - name: DATABASE_PASSWORD
-              value: "postgres"
+              value: "kiJ2Hfr%04xY"
             - name: DATABASE_HOST
               value: "db"
             - name: DATABASE_NAME
-              value: "postgres"
+              value: "db"
       restartPolicy: Never
   backoffLimit: 5
 
