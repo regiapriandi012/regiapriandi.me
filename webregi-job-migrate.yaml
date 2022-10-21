@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: webregi-v2-app
-          image: regiapriandi012/webregi-bismillah-final:latest
+          image: regiapriandi012/bismillah-webregi-v2-final-deploykube:latest
           command: ["/bin/sh","-c"]
           args: ["python manage.py makemigrations webregi && python manage.py migrate"]
           env:
