@@ -23,6 +23,6 @@ spec:
         - name: DATABASE_USER
           value: "regiapriandi"
         - name: DATABASE_PASSWORD
-          value: "kiJ2Hfr%04xY"
+          value: "postgres"
         - name: DATABASE_NAME
-          value: "db"
+          value: "postgres"

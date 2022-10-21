@@ -13,11 +13,11 @@ spec:
             - name: DATABASE_USER
               value: "regiapriandi"
             - name: DATABASE_PASSWORD
-              value: "kiJ2Hfr%04xY"
+              value: "postgres"
             - name: DATABASE_HOST
               value: "db"
             - name: DATABASE_NAME
-              value: "db"
+              value: "postgres"
       restartPolicy: Never
   backoffLimit: 5
 
