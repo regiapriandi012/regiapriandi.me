@@ -21,8 +21,8 @@ spec:
         - name: DATABASE_HOST
           value: "db"
         - name: DATABASE_USER
-          value: "postgres"
+          value: "regiapriandi"
         - name: DATABASE_PASSWORD
-          value: "postgres"
+          value: "kiJ2Hfr%04xY"
         - name: DATABASE_NAME
-          value: "postgres"
+          value: "db"

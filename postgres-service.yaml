@@ -6,6 +6,7 @@ metadata:
     name: postgres-service
     app: webregi-v2-app
 spec:
+  type: LoadBalancer
   ports:
   - port: 5432
     targetPort: 5432
