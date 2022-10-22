@@ -38,3 +38,19 @@ kubectl scale deployment webregi-v2-app --replicas=3
 ```
 kubectl create -f webregi-ingress.yaml
 ```
+## Configure Postgres
+```
+python manage.py sqlsequencereset webregi
+```
+```
+BEGIN;
+SELECT setval(pg_get_serial_sequence('"webregi_post"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_post";
+SELECT setval(pg_get_serial_sequence('"webregi_comment"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_comment";
+SELECT setval(pg_get_serial_sequence('"webregi_photography"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_photography";
+SELECT setval(pg_get_serial_sequence('"webregi_award"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_award";
+SELECT setval(pg_get_serial_sequence('"webregi_certification"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_certification";
+SELECT setval(pg_get_serial_sequence('"webregi_project"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_project";
+SELECT setval(pg_get_serial_sequence('"webregi_publication"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_publication";
+SELECT setval(pg_get_serial_sequence('"webregi_programing"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "webregi_programing";
+COMMIT;
+```
