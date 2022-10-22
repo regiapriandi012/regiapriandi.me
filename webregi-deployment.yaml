@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webregi-v2-app
-        image: regiapriandi012/bismillah-webregi-v2-final-deploykube:latest
+        image: regiapriandi012/bismillah-final-deploykube:latest
         ports:
         - containerPort: 8000
         env:

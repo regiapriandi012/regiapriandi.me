@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: webregi-v2-app
-          image: regiapriandi012/bismillah-webregi-v2-final-deploykube:latest
+          image: regiapriandi012/bismillah-final-deploykube:latest
           command: ['python', 'manage.py', 'collectstatic']
           env:
             - name: DATABASE_USER
