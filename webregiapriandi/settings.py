@@ -167,3 +167,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 RECAPTCHA_PUBLIC_KEY = "6LeERfQhAAAAAK3V2AmqHWBUJpHJzdoHZccyrTJb"
 RECAPTCHA_PRIVATE_KEY = "6LeERfQhAAAAAGD6CPGKyO4PatVYDxO2y708N-5l"
+
+CSRF_TRUSTED_ORIGINS = ['https://regiapriandi.me']
