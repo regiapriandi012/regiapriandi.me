@@ -22,7 +22,8 @@ kubectl create -f webregi-deployment.yaml
 ### Services
 ```
 kubectl create -f postgres-service.yaml
-kubectl create -f webregi-service.yaml
+kubectl create -f webregi-service-nodeport.yaml # for Ingress
+kubectl create -f webregi-service-loadbalancer.yaml # for LoadBalancer
 ```
 ### Jobs
 ```
@@ -32,4 +33,8 @@ kubectl create -f webregi-job-collectstatic.yaml
 ### Scale Deployment
 ```
 kubectl scale deployment webregi-v2-app --replicas=3
+```
+### Ingress
+```
+kubectl create -f webregi-ingress.yaml
 ```
